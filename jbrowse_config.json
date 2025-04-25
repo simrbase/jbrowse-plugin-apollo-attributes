@@ -2,7 +2,7 @@
   "plugins": [
     {
       "name": "ApolloFeatureStatus",
-      "url": "http://localhost:9000/dist/jbrowse-plugin-apollo-feature-status.umd.development.js"
+      "url": "http://localhost:9001/dist/jbrowse-plugin-apollo-feature-status.umd.development.js"
     }
   ]
 }

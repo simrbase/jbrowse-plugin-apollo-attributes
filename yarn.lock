@@ -2162,7 +2162,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:^7.0.0":
+"@mui/icons-material@npm:^7.0.0, @mui/icons-material@npm:^7.0.2":
   version: 7.0.2
   resolution: "@mui/icons-material@npm:7.0.2"
   dependencies:
@@ -8339,6 +8339,7 @@ __metadata:
     "@jbrowse/cli": "npm:^3.3.0"
     "@jbrowse/core": "npm:^3.3.0"
     "@jbrowse/development-tools": "npm:^2.1.1"
+    "@mui/icons-material": "npm:^7.0.2"
     "@mui/material": "npm:^5.10.5"
     "@mui/system": "npm:^5.10.5"
     "@mui/x-data-grid": "npm:^7.6.1"

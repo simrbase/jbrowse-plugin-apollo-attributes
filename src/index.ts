@@ -1,35 +1,41 @@
 import Plugin from '@jbrowse/core/Plugin'
 import PluginManager from '@jbrowse/core/PluginManager'
-import ViewType from '@jbrowse/core/pluggableElementTypes/ViewType'
-import { AbstractSessionModel, isAbstractMenuManager } from '@jbrowse/core/util'
 import { version } from '../package.json'
-import {
-  ReactComponent as HelloViewReactComponent,
-  stateModel as helloViewStateModel,
-} from './HelloView'
+
+import { CustomAttributeEditor } from './CustomAttributeEditor'
+import { CustomAttributeViewer } from './CustomAttributeViewer'
 
 export default class ApolloFeatureStatusPlugin extends Plugin {
   name = 'ApolloFeatureStatusPlugin'
   version = version
 
   install(pluginManager: PluginManager) {
-    pluginManager.addViewType(() => {
-      return new ViewType({
-        name: 'HelloView',
-        stateModel: helloViewStateModel,
-        ReactComponent: HelloViewReactComponent,
-      })
-    })
-  }
+    pluginManager.addToExtensionPoint(
+      'Apollo-ReservedAttributeKeys',
+      (arg: Record<string, string | undefined>) => {
+        arg.Status = 'status'
+        return arg
+      },
+    )
 
-  configure(pluginManager: PluginManager) {
-    if (isAbstractMenuManager(pluginManager.rootModel)) {
-      pluginManager.rootModel.appendToMenu('Add', {
-        label: 'Hello View',
-        onClick: (session: AbstractSessionModel) => {
-          session.addView('HelloView', {})
-        },
-      })
-    }
+    pluginManager.addToExtensionPoint(
+      'Apollo-AttributeEditorComponent',
+      (arg: React.ElementType, props) => {
+        if (props.key === 'status') {
+          return CustomAttributeEditor
+        }
+        return arg
+      },
+    )
+
+    pluginManager.addToExtensionPoint(
+      'Apollo-AttributeViewerComponent',
+      (arg: React.ElementType, props) => {
+        if (props.key === 'status') {
+          return CustomAttributeViewer
+        }
+        return arg
+      },
+    )
   }
 }
