@@ -1,6 +1,6 @@
 {
   "version": "0.0.1",
-  "name": "jbrowse-plugin-apollo-feature-status",
+  "name": "jbrowse-plugin-apollo-attributes",
   "packageManager": "yarn@4.9.1",
   "keywords": [
     "jbrowse",
@@ -20,7 +20,7 @@
     },
     "jbrowse": {
       "plugin": {
-        "name": "ApolloFeatureStatus"
+        "name": "ApolloAttributes"
       }
     }
   },
@@ -49,7 +49,7 @@
     "postversion": "git push --follow-tags"
   },
   "jbrowse-plugin": {
-    "name": "ApolloFeatureStatus"
+    "name": "ApolloAttributes"
   },
   "peerDependencies": {
     "@jbrowse/core": "^3.3.0"
@@ -60,7 +60,7 @@
     "@emotion/react": "^11.10.4",
     "@jbrowse/cli": "^3.3.0",
     "@jbrowse/core": "^3.3.0",
-    "@jbrowse/development-tools": "^2.1.1",
+    "@jbrowse/development-tools": "^2.2.1",
     "@mui/material": "^5.10.5",
     "@mui/system": "^5.10.5",
     "@mui/x-data-grid": "^7.6.1",
@@ -93,7 +93,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rimraf": "^5.0.1",
-    "rollup": "^3.0.0",
+    "rollup": "^4.0.0",
     "rxjs": "^7.8.1",
     "serve": "^14.2.0",
     "shx": "^0.3.3",

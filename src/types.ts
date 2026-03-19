@@ -1,10 +1,11 @@
-export enum Status {
-  New = 'New',
-  InProgress = 'In progress',
-  ReadyForReview = 'Ready for review',
-  Approved = 'Approved',
+export interface AttributeConfig {
+  key: string
+  label: string
+  type: 'select+free' | 'free'
+  values?: string[]
+  placeholder?: string
 }
 
-export function isStatus(possibleStatus: string): possibleStatus is Status {
-  return Object.values<string>(Status).includes(possibleStatus)
+export interface CurationConfig {
+  attributes: AttributeConfig[]
 }
