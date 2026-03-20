@@ -20,19 +20,40 @@ These attributes are required by curation protocol:
 
 ## Deployment
 
-Build the plugin and deploy using [apollo-tools](https://github.com/simrbase/apollo-tools):
+### 1. Build
 
 ```bash
-cd /data/src/jbrowse-plugin-apollo-attributes
-CYPRESS_INSTALL_BINARY=0 yarn
+git clone https://github.com/simrbase/jbrowse-plugin-apollo-attributes
+cd jbrowse-plugin-apollo-attributes
+yarn install
 yarn build
-
-# Deploy to all Apollo instances
-cd /var/www/html
-apollo-add-plugin /data/src/jbrowse-plugin-apollo-attributes
 ```
 
-The script copies the built JS and `curation-config.json` to each instance's web directory and registers the plugin in `*-config.json`.
+### 2. Copy files to your JBrowse web directory
+
+Copy the built JS and the config file:
+
+```bash
+cp dist/jbrowse-plugin-apollo-attributes.umd.development.js /path/to/jbrowse/
+cp curation-config.json /path/to/jbrowse/
+```
+
+### 3. Register in JBrowse config
+
+Add the plugin to your `config.json`:
+
+```json
+{
+  "plugins": [
+    {
+      "name": "ApolloAttributes",
+      "umdLoc": {
+        "uri": "jbrowse-plugin-apollo-attributes.umd.development.js"
+      }
+    }
+  ]
+}
+```
 
 ## Customizing Keys and Values
 
@@ -72,12 +93,10 @@ Edit `curation-config.json` in each instance's web directory (e.g. `/var/www/htm
 Requires Node.js ≥ 18 and Yarn 4.
 
 ```bash
-CYPRESS_INSTALL_BINARY=0 yarn     # install deps
-yarn build                        # production build → dist/
-yarn start                        # dev server with watch
+yarn install    # install deps
+yarn build      # production build → dist/
+yarn start      # dev server with watch
 ```
-
-> **Note:** `.yarnrc.yml` must set `nodeLinker: node-modules` — Yarn PnP is incompatible with rollup on this server.
 
 ## License
 
